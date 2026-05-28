@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bellezza By Yamil — Salón de Belleza · Santiago RD</title>
+<meta name="description" content="Resalta tu Bellezza. Salón de belleza premium en Santiago, República Dominicana. Cejas, pestañas, manicure, pedicure, spa y más.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0D0805;
+  --bg2:#110906;
+  --bg3:#180D09;
+  --bg4:#1F1109;
+  --gold:#C9A96E;
+  --gold2:#A8854C;
+  --gold3:#E8D5A0;
+  --gold-glow:rgba(201,169,110,.15);
+  --gold-border:rgba(201,169,110,.22);
+  --burg:#8B1A1A;
+  --burg2:#6B1212;
+  --rose:#C0484A;
+  --cream:#F5EDE4;
+  --cream2:#DCC9B8;
+  --cream3:#B09080;
+  --text:#F5EDE4;
+  --text2:#C4A898;
+  --text3:#7A5040;
+  --border:rgba(201,169,110,.18);
+  --r:10px;--r2:18px;
+  --shadow:0 4px 32px rgba(0,0,0,.5);
+  --shadow-gold:0 8px 40px rgba(201,169,110,.15);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+::-webkit-scrollbar{width:5px}
+.rev-e{display:inline-block;transform:scaleX(-1)}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--gold2);border-radius:3px}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0s!important;transition-duration:0s!important}}
+
+/* ── GRAIN TEXTURE ── */
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");opacity:.025;pointer-events:none;z-index:9999}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;width:100%;z-index:100;padding:20px 60px;display:flex;align-items:center;justify-content:space-between;transition:background .4s,box-shadow .4s,padding .3s}
+nav.scrolled{background:rgba(13,8,5,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 1px 0 var(--border);padding:14px 60px}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;letter-spacing:.06em;color:var(--gold)}
+.nav-logo span{color:var(--cream);font-weight:300}
+.nav-links{display:flex;gap:36px;list-style:none;align-items:center}
+.nav-links a{font-size:.67rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--text2);transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{border:1px solid var(--gold)!important;color:var(--gold)!important;padding:8px 20px;border-radius:40px;transition:background .2s,color .2s!important}
+.nav-cta:hover{background:var(--gold)!important;color:var(--bg)!important}
+.nav-ham{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.nav-ham span{display:block;width:24px;height:1.5px;background:var(--gold);transition:.3s;pointer-events:none}
+
+/* ── HERO ── */
+#hero{min-height:100vh;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--bg)}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 80% 20%,rgba(139,26,26,.25) 0%,transparent 55%),radial-gradient(ellipse 60% 50% at 20% 80%,rgba(201,169,110,.08) 0%,transparent 55%),radial-gradient(ellipse 40% 40% at 50% 50%,rgba(139,26,26,.06) 0%,transparent 60%)}
+.hero-ornament{position:absolute;pointer-events:none;opacity:.07}
+.hero-ornament-tl{top:0;left:0;width:380px}
+.hero-ornament-br{bottom:0;right:0;width:320px;transform:rotate(180deg)}
+.hero-roses{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.rose-el{position:absolute;border-radius:50% 0 50% 0;opacity:.04;animation:roseFloat ease-in-out infinite}
+@keyframes roseFloat{0%,100%{transform:translate(0,0) rotate(0deg)}50%{transform:translate(8px,-12px) rotate(8deg)}}
+.hero-gold-line-top{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.4}
+.hero-gold-line-bot{position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.2}
+.hero-content{position:relative;z-index:2;text-align:center;padding:80px 20px 60px;max-width:920px}
+.hero-tag{font-size:.62rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:28px;display:flex;align-items:center;justify-content:center;gap:16px}
+.hero-tag::before,.hero-tag::after{content:'';display:block;width:32px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.hero-tag::after{background:linear-gradient(90deg,var(--gold),transparent)}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,9.5vw,8.5rem);font-weight:300;line-height:.9;letter-spacing:.04em;color:var(--gold);margin-bottom:4px;text-shadow:0 0 80px rgba(201,169,110,.2);white-space:nowrap}
+.hero-logo-img{height:clamp(140px,22vw,220px);width:auto;mix-blend-mode:screen;margin-bottom:8px;filter:drop-shadow(0 0 40px rgba(201,169,110,.3))}
+.hero-by{font-family:'Cormorant Garamond',serif;font-size:clamp(1.2rem,2.5vw,2rem);font-weight:300;font-style:italic;color:var(--cream2);letter-spacing:.12em;margin-bottom:32px}
+.hero-ornate-rule{display:flex;align-items:center;justify-content:center;gap:12px;margin:0 auto 28px;max-width:280px}
+.hero-ornate-rule::before,.hero-ornate-rule::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.hero-ornate-rule::after{background:linear-gradient(90deg,var(--gold),transparent)}
+.hero-ornate-diamond{width:6px;height:6px;background:var(--gold);transform:rotate(45deg);flex-shrink:0}
+.hero-slogan{font-size:clamp(.8rem,1.4vw,.92rem);font-weight:400;color:var(--text2);line-height:1.8;letter-spacing:.1em;margin-bottom:48px;text-transform:uppercase}
+.hero-btns{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
+.btn-gold{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--bg);padding:15px 34px;border-radius:40px;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;transition:background .25s,transform .25s,box-shadow .25s;box-shadow:0 8px 32px rgba(201,169,110,.25)}
+.btn-gold:hover{background:var(--gold3);transform:translateY(-2px);box-shadow:0 12px 48px rgba(201,169,110,.4)}
+.btn-gold svg{width:14px;height:14px;transition:transform .2s}
+.btn-gold:hover svg{transform:translateX(3px)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--gold-border);color:var(--gold);padding:14px 28px;border-radius:40px;font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;transition:background .25s,border-color .25s}
+.btn-outline:hover{background:var(--gold-glow);border-color:var(--gold)}
+.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;animation:scrollPulse 2.2s ease-in-out infinite}
+.hero-scroll-line{width:1px;height:36px;background:linear-gradient(to bottom,transparent,var(--gold))}
+.hero-scroll-txt{font-size:.58rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--text3)}
+@keyframes scrollPulse{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
+/* ── GENERAL ── */
+.container{max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,80px)}
+.section-pad{padding:clamp(80px,10vw,130px) 0}
+.section-label{font-size:.6rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:12px}
+.section-label::before{content:'';display:block;width:20px;height:1px;background:var(--gold)}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5vw,4rem);font-weight:400;line-height:1.1;color:var(--cream)}
+.section-title em{font-style:italic;color:var(--gold)}
+.section-sub{font-size:clamp(.8rem,1.4vw,.9rem);color:var(--text2);line-height:1.88;max-width:480px}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:none}
+.reveal-l{opacity:0;transform:translateX(-36px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1)}
+.reveal-l.visible{opacity:1;transform:none}
+.reveal-r{opacity:0;transform:translateX(36px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1)}
+.reveal-r.visible{opacity:1;transform:none}
+[data-d="1"]{transition-delay:.07s}[data-d="2"]{transition-delay:.14s}[data-d="3"]{transition-delay:.21s}[data-d="4"]{transition-delay:.28s}[data-d="5"]{transition-delay:.35s}[data-d="6"]{transition-delay:.42s}
+
+/* ── ABOUT ── */
+#about{background:var(--bg2)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,96px);align-items:center}
+.about-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,2.8vw,2.4rem);font-weight:300;font-style:italic;line-height:1.45;color:var(--cream);margin:28px 0;padding-left:20px;border-left:2px solid var(--gold)}
+.about-quote span{color:var(--gold)}
+.about-attr{font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-top:8px;padding-left:20px}
+.about-desc{font-size:.86rem;color:var(--text2);line-height:1.92;margin-bottom:36px}
+.stats-row{display:flex;gap:clamp(24px,4vw,56px);flex-wrap:wrap}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:600;color:var(--gold);line-height:1}
+.stat-label{font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);margin-top:4px}
+.about-visual-card{background:linear-gradient(135deg,var(--bg3),var(--bg4));border:1px solid var(--border);border-radius:var(--r2);padding:clamp(36px,5vw,52px) clamp(24px,4vw,40px);text-align:center;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.about-visual-card::before{content:'';position:absolute;top:-30%;right:-20%;width:260px;height:260px;background:radial-gradient(circle,rgba(201,169,110,.08) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+.about-visual-card::after{content:'';position:absolute;bottom:-20%;left:-10%;width:180px;height:180px;background:radial-gradient(circle,rgba(139,26,26,.1) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+.avc-monogram{width:80px;height:80px;border:1.5px solid var(--gold-border);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;position:relative}
+.avc-monogram::before{content:'';position:absolute;inset:4px;border:1px solid var(--gold-border);border-radius:50%}
+.avc-monogram span{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:500;color:var(--gold)}
+.avc-name{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:400;color:var(--cream);margin-bottom:4px}
+.avc-role{font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.avc-divider{display:flex;align-items:center;gap:10px;margin:0 auto 18px;max-width:160px}
+.avc-divider::before,.avc-divider::after{content:'';flex:1;height:1px;background:var(--gold-border)}
+.avc-diamond{width:5px;height:5px;background:var(--gold2);transform:rotate(45deg);flex-shrink:0}
+.avc-text{font-size:.82rem;color:var(--text2);line-height:1.88}
+.avc-tag{display:inline-block;margin-top:18px;font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold2);border:1px solid var(--gold-border);border-radius:40px;padding:5px 16px}
+
+/* ── SERVICES ── */
+#services{background:var(--bg)}
+.services-header{text-align:center;margin-bottom:clamp(40px,6vw,64px)}
+.services-header .section-label{justify-content:center}
+.services-header .section-label::before{display:none}
+.services-header .section-label::after{content:'';display:block;width:20px;height:1px;background:var(--gold)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.8vw,20px)}
+.service-card{background:var(--bg2);border:1px solid rgba(201,169,110,.1);border-radius:var(--r2);padding:clamp(24px,3vw,36px);position:relative;overflow:hidden;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .3s;cursor:default}
+.service-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,169,110,.06),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
+.service-card:hover{transform:translateY(-5px);box-shadow:0 16px 56px rgba(0,0,0,.5),0 0 40px rgba(201,169,110,.06);border-color:var(--gold-border)}
+.service-card:hover::before{opacity:1}
+.svc-center{grid-column:2}
+.svc-icon{width:48px;height:48px;border:1px solid var(--gold-border);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;transition:border-color .3s,background .3s}
+.service-card:hover .svc-center{grid-column:2}
+.svc-icon{background:var(--gold-glow);border-color:var(--gold)}
+.svc-icon svg{width:20px;height:20px;color:var(--gold)}
+.svc-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:500;color:var(--cream);margin-bottom:8px}
+.svc-desc{font-size:.78rem;color:var(--text2);line-height:1.85;margin-bottom:16px}
+.svc-link{font-size:.63rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:6px;transition:gap .2s}
+.svc-link:hover{gap:10px}
+.svc-link svg{width:10px;height:10px}
+
+/* ── FEATURES ── */
+#features{background:var(--bg3);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.features-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.feat-item{text-align:center;padding:clamp(32px,4vw,56px) clamp(20px,2.5vw,32px);border-right:1px solid var(--border)}
+.feat-item:last-child{border-right:none}
+.feat-icon{width:52px;height:52px;border:1px solid var(--gold-border);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.feat-icon svg{width:22px;height:22px;color:var(--gold)}
+.feat-title{font-family:'Cormorant Garamond',serif;font-size:1.12rem;font-weight:500;color:var(--cream);margin-bottom:8px}
+.feat-desc{font-size:.74rem;color:var(--text2);line-height:1.75}
+
+/* ── GALLERY ── */
+#gallery{background:var(--bg2)}
+.gallery-header{text-align:center;margin-bottom:clamp(32px,4vw,52px)}
+.gallery-header .section-label{justify-content:center}
+.gallery-header .section-label::before{display:none}
+.gallery-header .section-label::after{content:'';display:block;width:20px;height:1px;background:var(--gold)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:240px;gap:10px;padding:0 clamp(20px,5vw,80px)}
+.gallery-item{border-radius:var(--r);overflow:hidden;border:1px solid rgba(201,169,110,.08)}
+.gallery-item:nth-child(7){grid-column:2}
+.gp{width:100%;height:100%;display:flex;align-items:flex-end;padding:16px 18px;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.gallery-item:hover .gp{transform:scale(1.05)}
+.gallery-item:hover{border-color:var(--gold-border)}
+.gp-1{background:linear-gradient(135deg,#8B1A1A,#2D0808)}
+.gp-2{background:linear-gradient(135deg,#3D2008,#C9A96E 200%)}
+.gp-3{background:linear-gradient(135deg,#1A0A05,#6B3020)}
+.gp-4{background:linear-gradient(135deg,#5C1010,#A8854C 200%)}
+.gp-5{background:linear-gradient(135deg,#2D0808,#8B1A1A 200%)}
+.gp-6{background:linear-gradient(135deg,#0D0805,#C9A96E 300%)}
+.gp-7{background:linear-gradient(135deg,#1a0a0a 0%,#5C2A1A 40%,#C9A96E 100%)}
+.gp span{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,237,228,.85)}
+.gallery-notice{text-align:center;padding:20px 0 clamp(60px,8vw,100px);font-size:.76rem;color:var(--text3);font-style:italic}
+.gallery-notice a{color:var(--gold);transition:opacity .2s}
+.gallery-notice a:hover{opacity:.75}
+
+/* ── CONTACT ── */
+#contact{background:var(--bg)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:start}
+.contact-items{margin:32px 0;display:flex;flex-direction:column;gap:20px}
+.ci{display:flex;align-items:flex-start;gap:16px}
+.ci-icon{width:42px;height:42px;border:1px solid var(--gold-border);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ci-icon svg{width:18px;height:18px;color:var(--gold)}
+.ci-label{font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--text3);margin-bottom:3px}
+.ci-value{font-size:.88rem;color:var(--cream);font-weight:500}
+.ci-value a{color:var(--cream);transition:color .2s}
+.ci-value a:hover{color:var(--gold)}
+.hours-grid{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;margin-top:2px}
+.hd{font-size:.78rem;color:var(--text2);font-weight:400}
+.ht{font-size:.78rem;color:var(--cream);font-weight:700}
+.wa-cta{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#25D366,#128C7E);border-radius:var(--r2);padding:16px 20px;margin-top:22px;transition:transform .25s,box-shadow .25s;box-shadow:0 4px 24px rgba(37,211,102,.18)}
+.wa-cta:hover{transform:translateY(-2px);box-shadow:0 8px 36px rgba(37,211,102,.28)}
+.wa-cta svg{width:26px;height:26px;color:#fff;flex-shrink:0}
+.wa-cta-label{font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.85)}
+.wa-cta-action{font-size:.9rem;font-weight:700;color:#fff}
+
+.wa-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:clamp(36px,5vw,56px) clamp(28px,4vw,44px);text-align:center;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.wa-card-ornament{position:absolute;top:-40%;right:-20%;width:280px;height:280px;background:radial-gradient(circle,rgba(37,211,102,.06) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+.wa-card-icon{width:72px;height:72px;background:linear-gradient(135deg,#25D366,#128C7E);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 4px 24px rgba(37,211,102,.25);color:#fff}
+.wa-card-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;color:var(--cream);margin-bottom:8px}
+.wa-card-sub{font-size:.82rem;color:var(--text2);line-height:1.8;margin-bottom:28px}
+.wa-quick-btns{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+.wa-quick{display:block;padding:11px 20px;border:1px solid rgba(37,211,102,.25);border-radius:40px;font-size:.74rem;font-weight:600;letter-spacing:.1em;color:rgba(37,211,102,.85);transition:background .2s,border-color .2s}
+.wa-quick:hover{background:rgba(37,211,102,.08);border-color:rgba(37,211,102,.5)}
+.wa-card-cta{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;padding:14px 32px;border-radius:40px;font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;transition:transform .25s,box-shadow .25s;box-shadow:0 6px 24px rgba(37,211,102,.25)}
+.wa-card-cta:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(37,211,102,.4)}
+.form-box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:clamp(26px,4vw,44px);box-shadow:var(--shadow)}
+.form-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:400;color:var(--cream);margin-bottom:6px}
+.form-sub{font-size:.78rem;color:var(--text2);margin-bottom:24px;line-height:1.75}
+.form-row{margin-bottom:13px}
+.form-label{display:block;font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text2);margin-bottom:7px}
+.form-input{width:100%;padding:12px 15px;background:var(--bg3);border:1px solid rgba(201,169,110,.15);border-radius:var(--r);font-family:'Montserrat',sans-serif;font-size:.84rem;color:var(--cream);outline:none;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;appearance:none}
+.form-input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,169,110,.08)}
+.form-input::placeholder{color:var(--text3)}
+.form-input option{background:var(--bg3);color:var(--cream)}
+textarea.form-input{resize:vertical;min-height:96px}
+.form-btn{width:100%;padding:14px;background:var(--gold);color:var(--bg);border:none;border-radius:40px;font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:background .25s,transform .25s,box-shadow .25s;box-shadow:0 6px 24px rgba(201,169,110,.25);margin-top:6px}
+.form-btn:hover{background:var(--gold3);transform:translateY(-2px);box-shadow:0 10px 36px rgba(201,169,110,.4)}
+
+/* ── FOOTER ── */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:clamp(48px,7vw,80px) 0 28px}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:48px;margin-bottom:44px}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:400;color:var(--gold);margin-bottom:10px}
+.footer-logo span{color:var(--cream2);font-weight:300}
+.footer-desc{font-size:.76rem;line-height:1.85;color:var(--text2);max-width:260px;margin-bottom:22px}
+.footer-social{display:flex;gap:10px}
+.footer-social a{width:36px;height:36px;border:1px solid var(--gold-border);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--text2);transition:border-color .2s,color .2s}
+.footer-social a:hover{border-color:var(--gold);color:var(--gold)}
+.footer-social svg{width:15px;height:15px}
+.footer-col-title{font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--text3);margin-bottom:18px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-links li a{font-size:.78rem;color:var(--text2);transition:color .2s}
+.footer-links li a:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-copy{font-size:.7rem;color:var(--text3)}
+.footer-tag{font-family:'Cormorant Garamond',serif;font-size:.95rem;font-style:italic;color:var(--text3)}
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:999;width:58px;height:58px;background:linear-gradient(135deg,#25D366,#128C7E);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:transform .25s,box-shadow .25s}
+.wa-float:hover{transform:scale(1.1);box-shadow:0 8px 32px rgba(37,211,102,.55)}
+.quote-divider{display:flex;align-items:center;gap:28px;padding:48px clamp(20px,6vw,100px);max-width:860px;margin:0 auto}
+.qd-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold-border),transparent)}
+.qd-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.15rem,2.2vw,1.6rem);font-weight:300;font-style:italic;color:var(--gold3);text-align:center;white-space:nowrap;margin:0}
+
+/* ── WA FAB ── */
+.wa-fab{position:fixed;bottom:28px;right:28px;width:54px;height:54px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);z-index:200;transition:transform .25s,box-shadow .25s}
+.wa-fab:hover{transform:scale(1.1);box-shadow:0 8px 32px rgba(37,211,102,.5)}
+.wa-fab svg{width:26px;height:26px;color:#fff}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .features-inner{grid-template-columns:repeat(2,1fr)}
+  .feat-item{border-right:none;border-bottom:1px solid var(--border)}
+  .feat-item:last-child{border-bottom:none}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  nav{padding:16px 24px}
+  nav.scrolled{padding:12px 24px}
+  .nav-links{display:none}
+  .nav-ham{display:flex}
+  .about-grid{grid-template-columns:1fr}
+  .about-visual-card{order:-1}
+  .services-grid{grid-template-columns:1fr;max-width:380px;margin:0 auto}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-auto-rows:170px}
+  .gallery-item:nth-child(7){grid-column:auto}
+  .gallery-grid .gallery-item{height:170px}
+  .contact-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:28px}
+  .footer-bottom{flex-direction:column;text-align:center}
+}
+@media(max-width:480px){
+  .hero-btns{flex-direction:column;align-items:center}
+  .features-inner{grid-template-columns:1fr}
+  .stats-row{gap:24px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="#hero"><img src="assets/belleza.logo.png" alt="Bellezza by Yamil" style="height:44px;width:auto;mix-blend-mode:screen"></a>
+  <ul class="nav-links">
+    <li><a href="#about">Nosotras</a></li>
+    <li><a href="#services">Servicios</a></li>
+    <li><a href="#gallery">Galería</a></li>
+    <li><a href="#contact" class="nav-cta">Agendar cita</a></li>
+  </ul>
+  <button class="nav-ham" id="navHam" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-gold-line-top"></div>
+  <div class="hero-gold-line-bot"></div>
+
+  <!-- Ornamental SVG corners -->
+  <svg class="hero-ornament hero-ornament-tl" viewBox="0 0 380 380" fill="none">
+    <path d="M0 0 L380 0 L380 20 Q200 20 20 200 L0 200 Z" fill="rgba(201,169,110,.04)"/>
+    <path d="M0 0 Q100 0 0 100" stroke="rgba(201,169,110,.15)" stroke-width="1" fill="none"/>
+    <path d="M0 20 Q80 20 20 80" stroke="rgba(201,169,110,.1)" stroke-width="0.5" fill="none"/>
+    <circle cx="30" cy="30" r="3" fill="none" stroke="rgba(201,169,110,.2)" stroke-width="1"/>
+    <circle cx="60" cy="60" r="2" fill="rgba(201,169,110,.15)"/>
+    <path d="M0 50 L50 0 M0 80 L80 0 M0 110 L110 0" stroke="rgba(201,169,110,.06)" stroke-width="0.5"/>
+  </svg>
+  <svg class="hero-ornament hero-ornament-br" viewBox="0 0 320 320" fill="none">
+    <path d="M0 0 L320 0 L320 320 Q160 280 0 160 Z" fill="rgba(139,26,26,.06)"/>
+    <path d="M320 320 Q220 320 320 220" stroke="rgba(201,169,110,.12)" stroke-width="1" fill="none"/>
+    <circle cx="290" cy="290" r="3" fill="none" stroke="rgba(201,169,110,.15)" stroke-width="1"/>
+  </svg>
+
+  <!-- Rose elements -->
+  <div class="hero-roses">
+    <div class="rose-el" style="width:400px;height:400px;top:-10%;right:5%;background:radial-gradient(circle,rgba(139,26,26,.15) 0%,transparent 70%);animation-duration:15s"></div>
+    <div class="rose-el" style="width:300px;height:300px;bottom:10%;left:-5%;background:radial-gradient(circle,rgba(201,169,110,.08) 0%,transparent 70%);animation-duration:20s;animation-delay:5s"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-tag">Salón de Belleza &middot; Santiago, RD</div>
+    <h1 class="hero-title">BELL<span class="rev-e">E</span>ZZA</h1>
+    <p class="hero-by">by Yamil</p>
+    <div class="hero-ornate-rule">
+      <div class="hero-ornate-diamond"></div>
+    </div>
+    <p class="hero-slogan">Resalta tu Bell<span class="rev-e">e</span>zza</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-gold">
+        Agenda tu cita
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#services" class="btn-outline">Ver servicios</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll" aria-hidden="true">
+    <div class="hero-scroll-line"></div>
+    <span class="hero-scroll-txt">Scroll</span>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section-pad">
+  <div class="container">
+    <div class="services-header reveal">
+      <div class="section-label">Lo que ofrecemos</div>
+      <h2 class="section-title" style="margin-bottom:14px">Nuestros <em>servicios</em></h2>
+      <p class="section-sub" style="margin:0 auto">Cada tratamiento está diseñado para realzar tu belleza natural con técnicas y productos de primer nivel.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card reveal" data-d="1">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <div class="svc-name">Pestañas</div>
+        <div class="svc-desc">Extensiones, lifting y laminado de pestañas. Logra una mirada impactante que dure semanas sin esfuerzo diario.</div>
+        <a href="#contact" class="svc-link">Consultar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+      </div>
+
+      <div class="service-card reveal" data-d="2">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 5h12M3 8h9M3 11h6M21 19H3m18 0l-4-14M3 19l4-14"/></svg>
+        </div>
+        <div class="svc-name">Cejas</div>
+        <div class="svc-desc">Diseño, laminado y microblading personalizado. Enmarcamos tu rostro con el arco perfecto para cada fisionomía.</div>
+        <a href="#contact" class="svc-link">Consultar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+      </div>
+
+      <div class="service-card reveal" data-d="3">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        </div>
+        <div class="svc-name">Spa</div>
+        <div class="svc-desc">Tratamientos corporales y faciales de relajación profunda. Renovate de adentro hacia afuera en nuestro espacio spa.</div>
+        <a href="#contact" class="svc-link">Consultar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+      </div>
+
+      <div class="service-card reveal" data-d="4">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/><path d="M7.5 7.5c.5-1 1.5-2 4.5-2s4 1 4.5 2M7.5 16.5c.5 1 1.5 2 4.5 2s4-1 4.5-2"/></svg>
+        </div>
+        <div class="svc-name">Pedicure</div>
+        <div class="svc-desc">Tratamiento spa completo para tus pies. Exfoliación, masaje, esmaltado semipermanente y nail art profesional.</div>
+        <a href="#contact" class="svc-link">Consultar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+      </div>
+
+      <div class="service-card reveal" data-d="5">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="svc-name">Manicure</div>
+        <div class="svc-desc">Cuidado premium de manos. Tratamiento hidratante, esmaltado gel de larga duración y diseños de nail art únicos.</div>
+        <a href="#contact" class="svc-link">Consultar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+      </div>
+
+      <div class="service-card reveal" data-d="6">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 2a5 5 0 0 1 5 5c0 3-2 5-5 8-3-3-5-5-5-8a5 5 0 0 1 5-5z"/><path d="M12 15v7m-3-2h6"/></svg>
+        </div>
+        <div class="svc-name">Depilación</div>
+        <div class="svc-desc">Técnicas suaves y eficaces para una piel perfectamente suave. Métodos adaptados a cada zona y tipo de piel.</div>
+        <a href="#contact" class="svc-link">Consultar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+      </div>
+
+      <div class="service-card svc-center reveal" data-d="1">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10"/><path d="M12 2c2.5 2.5 4 6 4 10"/><path d="M12 2C9.5 4.5 8 7.5 8 12"/><path d="M2 12h4M18 12h4M12 2v4M12 18v4"/></svg>
+        </div>
+        <div class="svc-name">Cabello</div>
+        <div class="svc-desc">Cortes, coloración, mechas, keratina y tratamientos capilares. Transformá tu cabello con las últimas técnicas.</div>
+        <a href="#contact" class="svc-link">Consultar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="section-pad">
+  <div class="container">
+    <div class="features-inner">
+      <div class="feat-item reveal" data-d="1">
+        <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="feat-title">Ambiente Premium</div>
+        <div class="feat-desc">Un espacio diseñado para que cada visita sea una experiencia de lujo.</div>
+      </div>
+      <div class="feat-item reveal" data-d="2">
+        <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="feat-title">Atención Personalizada</div>
+        <div class="feat-desc">Adaptamos cada servicio a tus necesidades y estilo único.</div>
+      </div>
+      <div class="feat-item reveal" data-d="3">
+        <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="feat-title">Abierto 7 Días</div>
+        <div class="feat-desc">Lunes a sábado 8am–8pm · Domingos 8am–3pm. Siempre disponibles.</div>
+      </div>
+      <div class="feat-item reveal" data-d="4">
+        <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <div class="feat-title">17.2K+ Clientas</div>
+        <div class="feat-desc">Una comunidad que creció orgánicamente por los resultados reales.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE DIVIDER -->
+<div class="quote-divider">
+  <div class="qd-line"></div>
+  <blockquote class="qd-text">"La belleza es el reflejo de un alma feliz"</blockquote>
+  <div class="qd-line"></div>
+</div>
+
+<!-- GALLERY -->
+<section id="gallery" style="padding-top:clamp(60px,8vw,100px)">
+  <div class="container">
+    <div class="gallery-header reveal">
+      <div class="section-label">Nuestro trabajo</div>
+      <h2 class="section-title" style="margin-bottom:10px">Resultados que<br><em>hablan solos</em></h2>
+    </div>
+  </div>
+  <div class="gallery-grid" style="margin-top:36px">
+    <div class="gallery-item reveal" data-d="1"><div class="gp gp-1"><span>Pestañas</span></div></div>
+    <div class="gallery-item reveal" data-d="2"><div class="gp gp-2"><span>Cejas</span></div></div>
+    <div class="gallery-item reveal" data-d="3"><div class="gp gp-3"><span>Spa</span></div></div>
+    <div class="gallery-item reveal" data-d="4"><div class="gp gp-4"><span>Pedicure</span></div></div>
+    <div class="gallery-item reveal" data-d="5"><div class="gp gp-5"><span>Manicure</span></div></div>
+    <div class="gallery-item reveal" data-d="6"><div class="gp gp-6"><span>Depilación</span></div></div>
+    <div class="gallery-item reveal" data-d="7"><div class="gp gp-7"><span>Cabello</span></div></div>
+  </div>
+  <div class="container">
+    <p class="gallery-notice">Seguinos en <a href="https://www.instagram.com/bellezzabeautyspa/" target="_blank" rel="noopener">@bellezzabeautyspa</a> para ver todos nuestros trabajos</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section-pad">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="reveal-l">
+        <div class="section-label">Contacto</div>
+        <h2 class="section-title" style="margin-bottom:14px">¿Lista para<br><em>brillar</em>?</h2>
+        <p class="section-sub">Agenda tu cita directamente por WhatsApp. Te respondemos enseguida.</p>
+        <div class="contact-items">
+          <div class="ci">
+            <div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+            <div>
+              <div class="ci-label">Teléfono / WhatsApp</div>
+              <div class="ci-value"><a href="tel:+18092479432">809-247-9432</a></div>
+            </div>
+          </div>
+          <div class="ci">
+            <div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div>
+              <div class="ci-label">Ubicación</div>
+              <div class="ci-value">Bell<span class="rev-e">e</span>zza, Santiago, Dominican Republic 51000</div>
+            </div>
+          </div>
+          <div class="ci">
+            <div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div>
+              <div class="ci-label">Horario</div>
+              <div class="hours-grid">
+                <span class="hd">Lunes – Sábado</span><span class="ht">8:00 am – 8:00 pm</span>
+                <span class="hd">Domingo</span><span class="ht">8:00 am – 3:00 pm</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="reveal-r">
+        <div class="wa-card">
+          <div class="wa-card-ornament"></div>
+          <div class="wa-card-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.464 3.488"/></svg>
+          </div>
+          <div class="wa-card-title">Agenda por WhatsApp</div>
+          <div class="wa-card-sub">Escribile directamente a Yamil.<br>Te responde a la brevedad.</div>
+          <div class="wa-quick-btns">
+            <a href="https://wa.me/18092479432?text=Hola%20Yamil%2C%20quisiera%20agendar%20una%20cita%20en%20Bellezza" target="_blank" rel="noopener" class="wa-quick">Agendar una cita</a>
+            <a href="https://wa.me/18092479432?text=Hola%20Yamil%2C%20quisiera%20consultar%20precios%20en%20Bellezza" target="_blank" rel="noopener" class="wa-quick">Consultar precios</a>
+            <a href="https://wa.me/18092479432?text=Hola%20Yamil%2C%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Bellezza" target="_blank" rel="noopener" class="wa-quick">Más información</a>
+          </div>
+          <a href="https://wa.me/18092479432" target="_blank" rel="noopener" class="wa-card-cta">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.464 3.488"/></svg>
+            Abrir WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="assets/belleza.logo.png" alt="Bellezza by Yamil" style="height:64px;width:auto;mix-blend-mode:screen;margin-bottom:10px"><div style="font-family:'Cormorant Garamond',serif;font-size:.85rem;font-weight:300;font-style:italic;color:var(--text2);letter-spacing:.08em">by Yamil</div>
+        <div class="footer-desc">Salón de belleza premium en Santiago, República Dominicana. Donde cada mujer sale sintiéndose la mejor versión de sí misma.</div>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/bellezzabeautyspa/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Servicios</div>
+        <ul class="footer-links">
+          <li><a href="#services">Pestañas</a></li>
+          <li><a href="#services">Cejas</a></li>
+          <li><a href="#services">Spa</a></li>
+          <li><a href="#services">Pedicure</a></li>
+          <li><a href="#services">Manicure</a></li>
+          <li><a href="#services">Depilación</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contacto</div>
+        <ul class="footer-links">
+          <li><a>Lun – Sáb: 8am – 8pm</a></li>
+          <li><a>Domingo: 8am – 3pm</a></li>
+          <li style="margin-top:12px"><a href="tel:+18092479432">809-247-9432</a></li>
+          
+          <li style="margin-top:12px"><a href="https://www.instagram.com/bellezzabeautyspa/" target="_blank">@bellezzabeautyspa</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 Bell<span class="rev-e">e</span>zza By Yamil &middot; Todos los derechos reservados</div>
+      <div class="footer-tag">Resalta tu Bell<span class="rev-e">e</span>zza &middot; #bellezzard</div>
+    </div>
+  </div>
+</footer>
+
+<!-- WA FAB -->
+<a href="https://wa.me/18092479432?text=Hola%20Yamil%2C%20quisiera%20agendar%20una%20cita%20en%20Bellezza" class="wa-fab" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.464 3.488"/></svg>
+</a>
+
+<script>
+// Nav
+const navEl = document.getElementById('nav');
+window.addEventListener('scroll', () => navEl.classList.toggle('scrolled', scrollY > 40), { passive:true });
+
+// Mobile nav
+const ham = document.getElementById('navHam');
+const navLinks = document.querySelector('.nav-links');
+let open = false;
+ham?.addEventListener('click', () => {
+  open = !open;
+  navLinks.style.cssText = open ? 'display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(13,8,5,.97);padding:20px 24px;gap:16px;box-shadow:0 8px 40px rgba(0,0,0,.6);border-top:1px solid rgba(201,169,110,.15)' : '';
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { open = false; navLinks.style.cssText = ''; }));
+
+// Reveal
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el => ro.observe(el));
+
+// Counter
+function countUp(el) {
+  const t = +el.dataset.target, dur = 1800, s = performance.now();
+  const tick = now => {
+    const p = Math.min((now - s) / dur, 1);
+    el.textContent = Math.round((1 - Math.pow(1 - p, 3)) * t);
+    if (p < 1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+}
+const co = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { countUp(e.target); co.unobserve(e.target); } });
+}, { threshold: 0.5 });
+document.querySelectorAll('.counter').forEach(el => co.observe(el));
+
+// Hero parallax
+const roseEls = document.querySelectorAll('.rose-el');
+window.addEventListener('scroll', () => {
+  const y = scrollY;
+  roseEls.forEach((el, i) => { el.style.transform = `translate(0, ${y * (i === 0 ? .1 : -.07)}px)`; });
+}, { passive:true });
+
+// Form
+document.getElementById('contactForm')?.addEventListener('submit', e => {
+  e.preventDefault();
+  const btn = e.target.querySelector('.form-btn');
+  const orig = btn.textContent;
+  btn.textContent = '¡Enviado!';
+  btn.style.background = '#25D366';
+  btn.style.color = '#fff';
+  setTimeout(() => { btn.textContent = orig; btn.style.background = ''; btn.style.color = ''; }, 3000);
+});
+</script>
+<a href="https://wa.me/18092479432?text=Hola%20Yamil%2C%20quisiera%20agendar%20una%20cita%20en%20Bellezza" target="_blank" rel="noopener" class="wa-float" aria-label="Contactar por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.464 3.488"/></svg>
+</a>
+</body>
+</html>
